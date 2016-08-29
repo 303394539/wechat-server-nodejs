@@ -1,0 +1,6 @@
+/logs/
+node_modules
+*.esproj
+.DS_Store
+.idea
+*.iml

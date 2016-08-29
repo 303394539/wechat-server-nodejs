@@ -1,0 +1,26 @@
+#!/bin/bash
+
+PWD=$(pwd)
+
+ALLLOG=$PWD/logs/forever-all.log
+OUTLOG=$PWD/logs/forever-out.log
+ERRLOG=$PWD/logs/forever-err.log
+
+case "$1" in
+	start)
+		forever start -l $ALLLOG -o $OUTLOG -e $ERRLOG -a $PWD/bin/www
+	;;
+	stop)
+		forever stop $PWD/bin/www
+	;;
+	reload|restart)
+		forever restart -l $ALLLOG -o $OUTLOG -e $ERRLOG -a $PWD/bin/www
+	;;
+	*)
+		sh $PWD/run start
+		exit 1
+	;;
+esac
+
+echo "app $1"
+exit 0
